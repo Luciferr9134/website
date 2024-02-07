@@ -98,29 +98,37 @@
         document.getElementById('valentine-img').onclick = function() {
             modal.style.display = "block";
         }
-
         function moveButton() {
             var noButton = document.getElementById('no-button');
             var modalContent = document.querySelector('.modal-content');
         
-            // Get the dimensions of the modal content
-            var contentRect = modalContent.getBoundingClientRect();
+            // Reset button position before calculating new position
+            noButton.style.transform = 'translate(0px, 0px)';
+        
+            // Allow for a reflow to happen so that the transform reset is applied
+            // This is done by accessing the offsetHeight property, which forces a reflow
+            noButton.offsetHeight;
+        
+            // Get the dimensions of the modal content and the button
+            var contentWidth = modalContent.offsetWidth;
+            var contentHeight = modalContent.offsetHeight;
+            var buttonWidth = noButton.offsetWidth;
+            var buttonHeight = noButton.offsetHeight;
         
             // Calculate the maximum x and y positions
-            var maxX = contentRect.width - noButton.offsetWidth;
-            var maxY = contentRect.height - noButton.offsetHeight;
+            var maxX = contentWidth - buttonWidth;
+            var maxY = contentHeight - buttonHeight;
         
-            // Calculate a random position within the modal content
+            // Generate a random position within the bounds
             var newX = Math.random() * maxX;
             var newY = Math.random() * maxY;
         
-            // Apply the new position
+            // Apply the new transformation
             noButton.style.transform = `translate(${newX}px, ${newY}px)`;
-            // Prevent the button from going outside the modal content's bounds
+            // Ensure the transform is applied smoothly
             noButton.style.transition = 'transform 0.3s ease';
-            noButton.style.right = 'auto';
-            noButton.style.bottom = 'auto';
         }
+
 
 
         function response(answer) {
