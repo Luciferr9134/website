@@ -110,22 +110,16 @@
             var maxX = contentRect.width - noButton.offsetWidth;
             var maxY = contentRect.height - noButton.offsetHeight;
         
-            // Get the current position of the button
-            var buttonRect = noButton.getBoundingClientRect();
-        
             // Calculate a random position within the modal content
-            var newX = Math.random() * maxX + contentRect.left;
-            var newY = Math.random() * maxY + contentRect.top;
-        
-            // Check for the button's position relative to the modal content
-            if (newX < contentRect.left) newX = contentRect.left;
-            if (newY < contentRect.top) newY = contentRect.top;
-            if (newX + noButton.offsetWidth > contentRect.right) newX = contentRect.right - noButton.offsetWidth;
-            if (newY + noButton.offsetHeight > contentRect.bottom) newY = contentRect.bottom - noButton.offsetHeight;
+            var newX = Math.random() * maxX;
+            var newY = Math.random() * maxY;
         
             // Apply the new position
-            noButton.style.left = newX - buttonRect.left + 'px';
-            noButton.style.top = newY - buttonRect.top + 'px';
+            noButton.style.transform = `translate(${newX}px, ${newY}px)`;
+            // Prevent the button from going outside the modal content's bounds
+            noButton.style.transition = 'transform 0.3s ease';
+            noButton.style.right = 'auto';
+            noButton.style.bottom = 'auto';
         }
 
 
