@@ -101,26 +101,33 @@
 
         function moveButton() {
             var noButton = document.getElementById('no-button');
-
-            // Get the viewport dimensions
-            var viewWidth = window.innerWidth;
-            var viewHeight = window.innerHeight;
+            var modalContent = document.querySelector('.modal-content');
         
-            // Get the button dimensions
+            // Get the dimensions of the modal content
+            var contentRect = modalContent.getBoundingClientRect();
+        
+            // Calculate the maximum x and y positions
+            var maxX = contentRect.width - noButton.offsetWidth;
+            var maxY = contentRect.height - noButton.offsetHeight;
+        
+            // Get the current position of the button
             var buttonRect = noButton.getBoundingClientRect();
         
-            // Calculate the new position
-            var newX = Math.random() * (viewWidth - buttonRect.width);
-            var newY = Math.random() * (viewHeight - buttonRect.height);
+            // Calculate a random position within the modal content
+            var newX = Math.random() * maxX + contentRect.left;
+            var newY = Math.random() * maxY + contentRect.top;
         
-            // Adjust position relative to the viewport
-            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            newY += currentScroll;
+            // Check for the button's position relative to the modal content
+            if (newX < contentRect.left) newX = contentRect.left;
+            if (newY < contentRect.top) newY = contentRect.top;
+            if (newX + noButton.offsetWidth > contentRect.right) newX = contentRect.right - noButton.offsetWidth;
+            if (newY + noButton.offsetHeight > contentRect.bottom) newY = contentRect.bottom - noButton.offsetHeight;
         
             // Apply the new position
-            noButton.style.top = newY + 'px';
-            noButton.style.left = newX + 'px';
+            noButton.style.left = newX - buttonRect.left + 'px';
+            noButton.style.top = newY - buttonRect.top + 'px';
         }
+
 
         function response(answer) {
             alert("You clicked " + answer);
