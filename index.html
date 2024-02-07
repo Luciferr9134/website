@@ -85,7 +85,7 @@
         <h1>Happy Rose Day!</h1>
         <div id="myModal" class="modal-overlay">
             <div class="modal-content">
-                <p>Even if there is 1% in this entire universe, will you be my long-distance valentine?</p>
+                <p>Even if there is 1% in this entire universe, will you be my long-distance valentine TANIII PARTNER ?</p>
                 <button class="modal-button yes-button" onclick="response('yes')">Yes</button>
                 <button class="modal-button no-button" id="no-button" onmouseover="moveButton()">No</button>
             </div>
@@ -102,13 +102,6 @@
             var noButton = document.getElementById('no-button');
             var modalContent = document.querySelector('.modal-content');
         
-            // Reset button position before calculating new position
-            noButton.style.transform = 'translate(0px, 0px)';
-        
-            // Allow for a reflow to happen so that the transform reset is applied
-            // This is done by accessing the offsetHeight property, which forces a reflow
-            noButton.offsetHeight;
-        
             // Get the dimensions of the modal content and the button
             var contentWidth = modalContent.offsetWidth;
             var contentHeight = modalContent.offsetHeight;
@@ -123,10 +116,8 @@
             var newX = Math.random() * maxX;
             var newY = Math.random() * maxY;
         
-            // Apply the new transformation
+            // Move the button
             noButton.style.transform = `translate(${newX}px, ${newY}px)`;
-            // Ensure the transform is applied smoothly
-            noButton.style.transition = 'transform 0.3s ease';
         }
 
 
