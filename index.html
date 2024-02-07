@@ -91,7 +91,7 @@
         <div class="modal-content">
             <p>Will you be my long-distance valentine?</p>
             <button class="modal-button yes-button" onclick="response('yes')">Yes</button>
-            <button class="modal-button no-button" onclick="response('no')">No</button>
+            <button class="modal-button no-button" id="no-button" onmouseover="moveButton(this)">No</button>
         </div>
     </div>
     <script>
@@ -103,21 +103,19 @@
             modal.style.display = "block";
         }
 
+        // Function to move the "No" button
+        function moveButton(button) {
+            var maxX = modal.clientWidth - button.clientWidth;
+            var maxY = modal.clientHeight - button.clientHeight;
+            button.style.left = Math.random() * maxX + 'px';
+            button.style.top = Math.random() * maxY + 'px';
+        }
+
         // Function to handle the response
         function response(answer) {
             alert("You clicked " + answer);
             modal.style.display = "none";
-            // Implement further logic based on the response
-        }
-
-        // Function to move the "No" button
-        function moveButton() {
-        var noButton = document.getElementById('no-button');
-        var maxX = modal.clientWidth - noButton.clientWidth;
-        var maxY = modal.clientHeight - noButton.clientHeight;
-        // Set the button's position to a random location within the modal
-        noButton.style.left = Math.floor(Math.random() * maxX) + 'px';
-        noButton.style.top = Math.floor(Math.random() * maxY) + 'px';
+            // You can add further logic based on the answer here
         }
     </script>
 </body>
