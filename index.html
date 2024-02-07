@@ -96,7 +96,7 @@
         </div>
     </div>
     <script>
-        // Get the modal
+       // Get the modal
         var modal = document.getElementById('myModal');
 
         // When the user clicks on the image, open the modal 
@@ -109,6 +109,16 @@
             alert("You clicked " + answer);
             modal.style.display = "none";
             // Implement further logic based on the response
+        }
+
+        // Function to move the "No" button
+        function moveButton() {
+            var noButton = document.getElementById('no-button');
+            var maxX = modal.clientWidth - noButton.clientWidth;
+            var maxY = modal.clientHeight - noButton.clientHeight;
+            noButton.style.position = 'relative';
+            noButton.style.left = Math.floor(Math.random() * maxX) + 'px';
+            noButton.style.top = Math.floor(Math.random() * maxY) + 'px';
         }
     </script>
 </body>
