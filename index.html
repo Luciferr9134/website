@@ -101,25 +101,25 @@
 
         function moveButton() {
             var noButton = document.getElementById('no-button');
-            var modalContent = document.querySelector('.modal-content');
+
+            // Get the viewport dimensions
+            var viewWidth = window.innerWidth;
+            var viewHeight = window.innerHeight;
         
-            // Get the dimensions of the modal content
-            var contentWidth = modalContent.offsetWidth;
-            var contentHeight = modalContent.offsetHeight;
+            // Get the button dimensions
+            var buttonRect = noButton.getBoundingClientRect();
         
-            // Get the dimensions of the button
-            var buttonWidth = noButton.offsetWidth;
-            var buttonHeight = noButton.offsetHeight;
+            // Calculate the new position
+            var newX = Math.random() * (viewWidth - buttonRect.width);
+            var newY = Math.random() * (viewHeight - buttonRect.height);
         
-            // Calculate max positions where the button can go without overflowing
-            var maxX = contentWidth - buttonWidth;
-            var maxY = contentHeight - buttonHeight;
+            // Adjust position relative to the viewport
+            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            newY += currentScroll;
         
-            // Ensure the button moves only within the modal's bounds
-            var newX = Math.random() * maxX;
-            var newY = Math.random() * maxY;
-        
-            noButton.style.transform = `translate(${newX}px, ${newY}px)`;
+            // Apply the new position
+            noButton.style.top = newY + 'px';
+            noButton.style.left = newX + 'px';
         }
 
         function response(answer) {
