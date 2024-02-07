@@ -70,7 +70,8 @@
             color: white;
         }
         .no-button {
-        position: absolute;
+            position: absolute;
+            transition: transform 0.3s ease; 
         }
     </style>
 </head>
@@ -87,35 +88,29 @@
 
     <!-- The Modal -->
     <div id="myModal" class="modal-overlay">
-        <!-- Modal content -->
         <div class="modal-content">
             <p>Will you be my long-distance valentine?</p>
             <button class="modal-button yes-button" onclick="response('yes')">Yes</button>
-            <button class="modal-button no-button" id="no-button" onmouseover="moveButton(this)">No</button>
+            <button class="modal-button no-button" id="no-button" onmouseover="moveButton()">No</button>
         </div>
     </div>
-    <script>
-       // Get the modal
-        var modal = document.getElementById('myModal');
 
-        // When the user clicks on the image, open the modal 
+    <script>
+        var modal = document.getElementById('myModal');
         document.getElementById('valentine-img').onclick = function() {
             modal.style.display = "block";
         }
 
-        // Function to move the "No" button
-        function moveButton(button) {
-            var maxX = modal.clientWidth - button.clientWidth;
-            var maxY = modal.clientHeight - button.clientHeight;
-            button.style.left = Math.random() * maxX + 'px';
-            button.style.top = Math.random() * maxY + 'px';
+        function moveButton() {
+            var noButton = document.getElementById('no-button');
+            var maxX = modal.clientWidth - noButton.clientWidth;
+            var maxY = modal.clientHeight - noButton.clientHeight;
+            noButton.style.transform = `translate(${Math.random() * maxX}px, ${Math.random() * maxY}px)`;
         }
 
-        // Function to handle the response
         function response(answer) {
             alert("You clicked " + answer);
             modal.style.display = "none";
-            // You can add further logic based on the answer here
         }
     </script>
 </body>
