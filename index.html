@@ -3,74 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive message for Tani Partner‼️ </title>
+    <title>Valentine's Day Message</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8e0e0; /* Light pink background */
-            color: #6c5353; /* Dark pink text color */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        /* Existing styles */
+        /* ... */
+        .back-home-button {
+            background-color: #c62828;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
         }
-        .container {
-            text-align: center;
+        .back-home-button:hover {
+            background-color: #a51f1f;
         }
-        h1 {
-            color: #c62828; /* Dark red for headings */
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 24px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 50%; /* Make the image round */
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Add a soft shadow */
-        #thanks-message {
+        /* Pop-up styles */
+        .popup {
             display: none;
-            color: #c62828; /* Example color for the thanks message */
-            /* Add more styles as needed */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s;
         }
-        /* Style the button */
-        .home-button {
-            background-color: #c62828; /* Example button color */
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Button inside the pop-up */
+        .popup button {
+            background-color: #6c5353;
             color: white;
             border: none;
             padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
             cursor: pointer;
             border-radius: 5px;
+            font-size: 16px;
+        }
+        .popup button:hover {
+            background-color: #5a4545;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="valentine.gif" alt="Valentine's Day GIF" id="valentine-img">
-        <div id="thanks-message">
-            <p>Thanks for taking flowers from your Zoro.</p>
-            <button onclick="window.location.href='/'" class="home-button">Go to Home Page</button>
-        </div>
+        <a href="image.png" target="_blank" id="image-link">
+            <img src="valentine.gif" alt="Valentine's Day GIF">
+        </a>
+        <p>Try accepting flowers...</p>
         <h1>Happy Rose Day!</h1>
         <p>I know there's only a 1% chance, but I wish you were my valentine.</p>
     </div>
 
+    <!-- Pop-up message -->
+    <div class="popup" id="popup-message">
+        <p>Thanks for accepting flowers from ZORO</p>
+        <button onclick="closePopup()">Back Home</button>
+    </div>
+
     <script>
-        // JavaScript to handle image click and show the thanks message
-        document.getElementById('valentine-img').onclick = function() {
-            document.getElementById('thanks-message').style.display = 'block';
+        // Get the link that opens the pop-up
+        var link = document.getElementById('image-link');
+
+        // When the link is clicked, display the pop-up
+        link.onclick = function(event) {
+            event.preventDefault(); // Prevent the link from directly opening the image
+            var popup = document.getElementById('popup-message');
+            popup.style.display = 'block'; // Show the pop-up
         };
+
+        // Function to close the pop-up and redirect to home
+        function closePopup() {
+            var popup = document.getElementById('popup-message');
+            popup.style.display = 'none'; // Hide the pop-up
+            window.location.href = '/'; // Redirect to home page
+        }
     </script>
 </body>
 </html>
