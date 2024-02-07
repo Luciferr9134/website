@@ -70,8 +70,7 @@
             color: white;
         }
         .no-button {
-            background-color: #f44336; /* Red */
-            color: white;
+        position: absolute;
         }
     </style>
 </head>
@@ -113,12 +112,12 @@
 
         // Function to move the "No" button
         function moveButton() {
-            var noButton = document.getElementById('no-button');
-            var maxX = modal.clientWidth - noButton.clientWidth;
-            var maxY = modal.clientHeight - noButton.clientHeight;
-            noButton.style.position = 'relative';
-            noButton.style.left = Math.floor(Math.random() * maxX) + 'px';
-            noButton.style.top = Math.floor(Math.random() * maxY) + 'px';
+        var noButton = document.getElementById('no-button');
+        var maxX = modal.clientWidth - noButton.clientWidth;
+        var maxY = modal.clientHeight - noButton.clientHeight;
+        // Set the button's position to a random location within the modal
+        noButton.style.left = Math.floor(Math.random() * maxX) + 'px';
+        noButton.style.top = Math.floor(Math.random() * maxY) + 'px';
         }
     </script>
 </body>
