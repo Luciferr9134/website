@@ -34,19 +34,43 @@
             height: auto;
             border-radius: 50%; /* Make the image round */
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Add a soft shadow */
+        #thanks-message {
+            display: none;
+            color: #c62828; /* Example color for the thanks message */
+            /* Add more styles as needed */
+        }
+        /* Style the button */
+        .home-button {
+            background-color: #c62828; /* Example button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Clickable image that links to the uploaded image --> 
-        <a href="image.png" target="_blank">
-            <img src="valentine.gif" alt="Valentine's Day GIF">
-        </a>
-        <!-- Comment below the GIF -->
-        <p>Try accepting flowers...</p>
+        <img src="valentine.gif" alt="Valentine's Day GIF" id="valentine-img">
+        <div id="thanks-message">
+            <p>Thanks for taking flowers from your Zoro.</p>
+            <button onclick="window.location.href='/'" class="home-button">Go to Home Page</button>
+        </div>
         <h1>Happy Rose Day!</h1>
-        <p>I know there's only a 1% chance, but I wish you were my valentine TANIIIII Partner 💖 </p>
+        <p>I know there's only a 1% chance, but I wish you were my valentine.</p>
     </div>
+
+    <script>
+        // JavaScript to handle image click and show the thanks message
+        document.getElementById('valentine-img').onclick = function() {
+            document.getElementById('thanks-message').style.display = 'block';
+        };
+    </script>
 </body>
 </html>
