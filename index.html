@@ -101,9 +101,25 @@
 
         function moveButton() {
             var noButton = document.getElementById('no-button');
-            var maxX = modal.clientWidth - noButton.clientWidth;
-            var maxY = modal.clientHeight - noButton.clientHeight;
-            noButton.style.transform = `translate(${Math.random() * maxX}px, ${Math.random() * maxY}px)`;
+            var modalContent = document.querySelector('.modal-content');
+        
+            // Get the dimensions of the modal content
+            var contentWidth = modalContent.offsetWidth;
+            var contentHeight = modalContent.offsetHeight;
+        
+            // Get the dimensions of the button
+            var buttonWidth = noButton.offsetWidth;
+            var buttonHeight = noButton.offsetHeight;
+        
+            // Calculate max positions where the button can go without overflowing
+            var maxX = contentWidth - buttonWidth;
+            var maxY = contentHeight - buttonHeight;
+        
+            // Ensure the button moves only within the modal's bounds
+            var newX = Math.random() * maxX;
+            var newY = Math.random() * maxY;
+        
+            noButton.style.transform = `translate(${newX}px, ${newY}px)`;
         }
 
         function response(answer) {
